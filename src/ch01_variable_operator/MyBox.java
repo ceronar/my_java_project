@@ -6,7 +6,7 @@ public class MyBox {
         int height = 5;
         int area = width * height;
         int perimeter = (width + height) * 2;
-        double diagonal = Math.sqrt(width * width + height * height);
+        double diagonal = Math.sqrt(Math.pow(width, 2) +Math.pow(height, 2));
 
         System.out.println("너비 : " + width);
         System.out.println("높이 : " + height);
