@@ -5,7 +5,7 @@ public class Trapezoid {
         int bottom = 20;
         int top = 10;
         int height = 15;
-        double area = (bottom + top) * height / 2;
+        double area = (double) ((bottom + top) * height) / 2;
 
         System.out.println("밑면 : " + bottom +
                         "\n윗변 : " + top +
