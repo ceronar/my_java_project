@@ -44,7 +44,7 @@ public class Saram01 {
     }
 
     public void setNationality(String nationality) {
-        this.nationality = nationality;
+        Saram01.nationality = nationality;
     }
     public void setName(String name) {
         this.name = name;
