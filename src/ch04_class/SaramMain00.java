@@ -1,4 +1,4 @@
-package ch03_array;
+package ch04_class;
 
 public class SaramMain00 {
     public static void main(String[] args) {

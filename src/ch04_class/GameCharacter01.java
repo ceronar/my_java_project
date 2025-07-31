@@ -1,4 +1,4 @@
-package ch03_array;
+package ch04_class;
 
 public class GameCharacter01 {
     private String nickName;

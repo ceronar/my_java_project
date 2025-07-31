@@ -1,8 +1,7 @@
-package ch03_array;
+package ch04_class;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 public class BattleGUI extends JFrame {

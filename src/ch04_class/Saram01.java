@@ -1,4 +1,4 @@
-package ch03_array;
+package ch04_class;
 
 // 단계 1 : 클래스 정의(선언)
 public class Saram01 {
