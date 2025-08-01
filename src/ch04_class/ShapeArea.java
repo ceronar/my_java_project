@@ -11,6 +11,4 @@ public class ShapeArea {
     public void area(int top, int bottom, int height) {
         System.out.println("사다리꼴의 면적 : " + (((top+bottom)*height)/2));
     }
-
-
 }

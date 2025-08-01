@@ -14,6 +14,16 @@ public class GameCharacter01 {
     public GameCharacter01() {
     }
 
+    public GameCharacter01(String nickName, int level, int health, int mana, double attackPower, double defensePower) {
+        this.nickName = nickName;
+        this.level = level;
+        this.health = health;
+        this.mana = mana;
+        this.attackPower = attackPower;
+        this.defensePower = defensePower;
+        this.job = "novice";
+    }
+
     public GameCharacter01(String nickName, int level, int health, int mana, double attackPower, double defensePower, String job) {
         this.nickName = nickName;
         this.level = level;
