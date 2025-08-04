@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 class TestCodeMain {
     public static void main(String[] args) {
 
@@ -5,20 +8,27 @@ class TestCodeMain {
 
     }
 
-    public String solution(int[] food) {
-        StringBuilder answer = new StringBuilder();
-        for(int i = 1; i <= 3; i++) {
-            for(int j = 0; j < food[i]/2; j++) {
+    class Solution {
+        public String solution(String X, String Y) {
+            StringBuilder answer = new StringBuilder();
+            ArrayList<Integer> list = new ArrayList<>();
+            for(int i = 0; i < X.length(); i++) {
+                String temp = X.substring(i, i+1);
+                if(Y.contains(temp)){
+                    Y = Y.replaceFirst(temp, "");
+                    list.add(Integer.valueOf(temp));
+                }
+            }
+            list.sort(Collections.reverseOrder());
+            for(int i : list) {
                 answer.append(i);
             }
-        }
-        answer.append("0");
-        for(int i = 3; i >= 1; i--) {
-            for(int j = 0; j < food[i]/2; j++) {
-                answer.append(i);
+            if(answer.toString().isEmpty()) {
+                answer = new StringBuilder("-1");
+            } else if(answer.toString().matches("^00$")){
+                answer = new StringBuilder("0");
             }
+            return answer.toString();
         }
-        System.out.println(answer);
-        return answer.toString();
     }
 }

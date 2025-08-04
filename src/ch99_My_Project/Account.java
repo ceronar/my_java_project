@@ -49,7 +49,7 @@ public class Account {
 
     }
 
-    public void withdraw(int amount) {
+    public void withDraw(int amount) {
 
     }
 
