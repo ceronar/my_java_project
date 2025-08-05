@@ -18,4 +18,9 @@ public class Americano04 extends Beverage04 {
         super.showInfo();
         System.out.println("투입된 물의 양 : " + waterAmount + "ml");
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", 물량 : " + waterAmount + "ml";
+    }
 }

@@ -5,23 +5,23 @@ import java.util.List;
 public class Account {
     private static int idCounter = 1;       // static: 모든 객체가 공유
     private final int id;                   // final: 한 번 할당된 후 변경 불가
-    private String accountId;
-    private String ownerName;
+    private String accountNumber;           // 계좌 번호
+    private String ownerName;               // 예금주
     private int balance;                    // 잔액
     private List<Transaction> transactions; // 거래 내역
 
-    public Account(String accountId, String ownerName, int balance) {
+    public Account(String accountNumber, String ownerName, int balance) {
         this.id = idCounter++;
-        this.accountId = accountId;
+        this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance = balance;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getAccountNumber() {
+        return accountNumber;
     }
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
     public String getOwnerName() {
         return ownerName;
@@ -45,19 +45,29 @@ public class Account {
         return id;
     }
 
-    public void deposit(int amount) {
-
+    public String deposit(String accountNumber, int amount) {
+        transactions.add(new Transaction(accountNumber, "입금", amount));
+        this.balance += amount;
+        return "입금 완료: " + amount + "원";
     }
 
-    public void withDraw(int amount) {
-
+    public String withDraw(String accountNumber, int amount) {
+        if (amount > balance) {
+            addTransaction(new Transaction(accountNumber, "출금실패", amount));
+            return "잔액 부족: 출금 실패";
+        }
+        balance -= amount;
+        transactions.add(new Transaction(accountNumber, "출금", amount));
+        return "출금 완료: " + amount + "원";
     }
 
     public void addTransaction(Transaction t) {
-
+        transactions.add(t);
     }
 
     public void printTransactionHistory() {
-
+        for(Transaction t :transactions){
+            System.out.println(t);
+        }
     }
 }
