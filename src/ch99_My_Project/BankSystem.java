@@ -10,7 +10,7 @@ public class BankSystem {
 
     public BankSystem() {}
 
-    public String createAccount() {
+    public boolean createAccount() {
         // accountId, ownerName, balance
         String accountNumber = "";
         while (true) {
@@ -25,12 +25,26 @@ public class BankSystem {
         System.out.print("예금주 명 : ");
         String ownerName = sc.nextLine();
         System.out.print("초기 입금액 : ");
-        int balance = sc.nextInt();
+        String input = sc.nextLine();
+        int balance;
+        String message = "";
+        try {
+            balance = Integer.parseInt(input);
+            if (balance <= 0) {
+                message = "입금 금액은 1원 이상이어야 합니다.";
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            message = "숫자를 정확히 입력해주세요.";
+            return false;
+        }
         accounts.put(accountNumber, new Account(accountNumber, ownerName, balance));
-        return "가입성공";
+        message = "가입성공";
+        System.out.println(message);
+        return true;
     }
 
-    public void deposit() {
+    public boolean deposit() {
         System.out.print("입금할 계좌번호 : ");
         String accountNumber = sc.nextLine();
         System.out.print("입금액 : ");
@@ -40,23 +54,24 @@ public class BankSystem {
             amount = Integer.parseInt(input);
             if (amount <= 0) {
                 System.out.println("입금 금액은 1원 이상이어야 합니다.");
-                return;
+                return false;
             }
         } catch (NumberFormatException e) {
             System.out.println("숫자를 정확히 입력해주세요.");
-            return;
+            return false;
         }
         Account acc = accounts.get(accountNumber);
         String message = "";
         if (acc != null) {
-            message = acc.deposit(accountNumber, amount);
+            message = acc.deposit(amount);
         } else {
             message = "계좌를 찾을 수 없습니다.";
         }
         System.out.println(message);
+        return true;
     }
 
-    public void withDraw() {
+    public boolean withDraw() {
         System.out.print("출금할 계좌번호 : ");
         String accountNumber = sc.nextLine();
         System.out.print("출금액 : ");
@@ -66,20 +81,21 @@ public class BankSystem {
             amount = Integer.parseInt(input);
             if (amount <= 0) {
                 System.out.println("출금 금액은 1원 이상이어야 합니다.");
-                return;
+                return false;
             }
         } catch (NumberFormatException e) {
             System.out.println("숫자를 정확히 입력해주세요.");
-            return;
+            return false;
         }
         Account acc = accounts.get(accountNumber);
         String message = "";
         if (acc != null) {
-            message = acc.withDraw(accountNumber, amount);
+            message = acc.withDraw(amount);
         } else {
             message = "계좌를 찾을 수 없습니다.";
         }
         System.out.println(message);
+        return true;
     }
 
     public void showAccount() {
@@ -88,7 +104,8 @@ public class BankSystem {
         Account acc = accounts.get(accountNumber);
         String message = "";
         if (acc != null) {
-            message = acc.showAccount(accountNumber);
+            message = acc.showAccount();
+            message += acc.printTransactionHistory();
         } else {
             message = "계좌를 찾을 수 없습니다.";
         }
@@ -97,7 +114,7 @@ public class BankSystem {
 
     public void run() {
         while (true) {
-            System.out.println("1. 입금 | 2. 출금 | 3. 가입 | 4. 종료");
+            System.out.println("1. 입금 | 2. 출금 | 3. 가입 | 4. 조회 | 5. 종료");
             String input = sc.nextLine();
             int choice;
 
@@ -119,6 +136,9 @@ public class BankSystem {
                     createAccount();
                     break;
                 case 4:
+                    showAccount();
+                    break;
+                case 5:
                     System.out.println("프로그램 종료");
                     sc.close(); // 여기서 닫기
                     return; // 메소드 종료 → main도 종료

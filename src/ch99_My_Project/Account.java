@@ -45,13 +45,13 @@ public class Account {
         return id;
     }
 
-    public String deposit(String accountNumber, int amount) {
+    public String deposit(int amount) {
         transactions.add(new Transaction(accountNumber, "입금", amount));
         this.balance += amount;
         return "입금 완료: " + amount + "원";
     }
 
-    public String withDraw(String accountNumber, int amount) {
+    public String withDraw(int amount) {
         if (amount > balance) {
             addTransaction(new Transaction(accountNumber, "출금실패", amount));
             return "잔액 부족: 출금 실패";
@@ -65,15 +65,23 @@ public class Account {
         transactions.add(t);
     }
 
-    public void printTransactionHistory() {
-        for(Transaction t :transactions){
-            System.out.println(t);
+    public StringBuilder printTransactionHistory() {
+        StringBuilder message = new StringBuilder();
+        if(transactions == null) {
+            message.append("거래 없음");
+        } else {
+            for(Transaction t :transactions){
+                message.append(t);
+            }
         }
+        return message;
     }
 
-    public String showAccount(String accountNumber) {
-        String message = "";
-
+    public String showAccount() {
+        String message = "계좌번호 : " + accountNumber + "\n"
+                        + "예 금 주 : " + ownerName + "\n"
+                        + "잔    액 : " + balance + "\n";
+        message += "----- 거래 내역 -----\n";
         return message;
     }
 }
