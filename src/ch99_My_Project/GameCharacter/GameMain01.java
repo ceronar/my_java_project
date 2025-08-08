@@ -1,4 +1,4 @@
-package ch04_class;
+package ch99_My_Project.GameCharacter;
 
 public class GameMain01 {
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
-package ch99_My_Project;
+package ch99_My_Project.BankSystem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -15,6 +16,7 @@ public class Account {
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance = balance;
+        this.transactions = new ArrayList<Transaction>();
     }
 
     public String getAccountNumber() {
@@ -38,7 +40,7 @@ public class Account {
     public List<Transaction> getTransactions() {
         return transactions;
     }
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
     public int getId() {

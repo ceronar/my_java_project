@@ -1,4 +1,4 @@
-package ch99_My_Project;
+package ch99_My_Project.BankSystem;
 
 public class AccountTestMain {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ch99_My_Project;
+package ch99_My_Project.BankSystem;
 
 import java.util.HashMap;
 import java.util.Map;

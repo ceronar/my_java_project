@@ -1,4 +1,4 @@
-package ch04_class;
+package ch99_My_Project.GameCharacter;
 
 import javax.swing.*;
 import java.awt.*;
